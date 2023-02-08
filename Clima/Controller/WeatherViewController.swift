@@ -40,7 +40,7 @@ class WeatherViewController: UIViewController {
 extension WeatherViewController: UITextFieldDelegate {
     @IBAction func searchPressed(_ sender: UIButton) {
         searchTextField.endEditing(true)
-        print(searchTextField.text!)
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -50,7 +50,7 @@ extension WeatherViewController: UITextFieldDelegate {
     //指定されたテキストフィールドで編集を停止するかどうかを確認してくる
     //ここではsearchTextFieldを指定していないため、引数に渡ってきたtextFieldに対して処理を行う
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        guard textField.text != "" else {
+        guard let text = textField.text, !text.isEmpty else {
             //テキストフィールドが空の場合、編集が終了しない
             textField.placeholder = "Type something"
             return false    
